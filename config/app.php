@@ -14,6 +14,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'passport_client_id' => env('PASSPORT_CLIENT_ID', 1),
+    'passport_client_secret' => env('PASSPORT_CLIENT_SECRET', "SECRET"),
 
     /*
     |--------------------------------------------------------------------------
