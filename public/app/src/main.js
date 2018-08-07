@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Router from './router.js';
-import store from './store.js';
+import Router from './router';
+import store from './store';
+import {mixins} from './mixins';
 
-Vue.config.productionTip = true;
+Vue.config.productionTip = false;
+Vue.config.debug = true;
 Vue.config.devtools = true;
 
+Vue.mixin(mixins);
 new Vue({
   el: '#app',
   render: h => h(App),

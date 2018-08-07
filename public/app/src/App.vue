@@ -1,6 +1,11 @@
 <template>
   <div>
-    <router-view></router-view>
+    <div v-if="user === null">
+      <router-view></router-view>
+    </div>
+    <div v-else>
+      Admin Dashboard here
+    </div>
   </div>
 </template>
 
@@ -8,8 +13,14 @@
 export default {
   name: 'app',
   data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+    return {}
+  },
+  mounted(){
+      console.log(this.$store.state.user);
+  },
+  computed:{
+    user(){
+      return this.$store.state.user;
     }
   }
 }

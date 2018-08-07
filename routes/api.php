@@ -37,8 +37,6 @@ Route::post('/login', function(Request $request){
  * Passport protected APIs
  */
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('/user', function(){
-
-    });
+    Route::get('/user', 'UserController@getUser');
 });
 
