@@ -18,7 +18,6 @@ use Illuminate\Http\Request;
  */
 Route::post('/login', function(Request $request){
     $http = new GuzzleHttp\Client;
-
     $response = $http->post( config('app.url') . '/oauth/token', [
         "form_params"=>[
             'grant_type' => 'password',
