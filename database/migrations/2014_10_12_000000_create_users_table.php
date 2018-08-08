@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('position')->nullable();
             $table->integer('is_active');
+            $table->string('photo')->nullable();
             $table->text('user_data');
             $table->datetime('last_activity');
             $table->rememberToken();

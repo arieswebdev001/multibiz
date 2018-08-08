@@ -1,40 +1,25 @@
 <template>
   <div>
-        <!-- begin:: Page -->
-		<div class="m-grid m-grid--hor m-grid--root m-page">		
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2" id="m_login">
-				<div class="m-grid__item m-grid__item--fluid m-login__wrapper">
-					<div class="m-login__container">
-						<div class="m-login__logo">
-							<a href="#">
-							    <img src="images/app/logo.png">  	
-							</a>
-						</div>
-						<div>
-							<div class="m-login__head">
-								<h3 class="m-login__title">Sign In To Your Account</h3>
-							</div>
-							<form class="m-login__form m-form" action="">
-								<div class="form-group m-form__group">
-									<input class="form-control m-input"   type="text" placeholder="Email" name="email" autocomplete="off">
-								</div>
-								<div class="form-group m-form__group">
-									<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
-								</div>
-								<div class="row m-login__form-sub">
-									<div class="col m--align-right m-login__form-right">
-										<a href="#/forgot-password" class="m-link">Forget Password ?</a>
-									</div>
-								</div>
-								<div class="m-login__form-action">
-									<button class="btn btn-success m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">Sign In</button>
-								</div>
-							</form>
-						</div>
-					</div>	
+    <img src="images/app/logo.png" />  	
+		<h3>Sign In To Your Account</h3>
+		<form action="" @submit.prevent="null">
+			<div class="form-group">
+				<input class="form-control" type="email" v-model="user.email" placeholder="Email" name="email" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<input class="form-control" v-model="user.password" type="password" placeholder="Password" name="password">
+			</div>
+			<div>
+				<div>
+					<a href="#/forgot-password">Forget Password ?</a>
+					<br/>
 				</div>
-			</div>				
-		</div>
+			</div>
+			<div>
+				<button class="btn btn-success"
+				@click="login($event)">Sign In</button>
+			</div>
+		</form>	
   </div>
 </template>
 
@@ -42,7 +27,38 @@
 export default {
   name: 'Login',
   data () {
-    return {}
-  }
+    return {
+			user:{
+				email:'',
+				password:''
+			}
+		}
+	},
+	mounted(){
+		if(this.current_user !== null)
+			this.redirectToHome();
+	},
+	methods:{
+		login(event){
+			let u = this;
+			this.spinButton(event.target);
+			this.$http.post('../../api/login', this.user)
+				.then((response) => {
+					window.localStorage.setItem("token", response.data.access_token);
+					u.redirectToHome();
+					window.location.reload();
+				}).catch(function (error) {
+					console.log(error);
+				})
+				.then(function () {
+					u.stopButton(event.target)
+				});
+		}
+	},
+	computed:{
+		current_user(){
+			return this.$store.state.user;
+		}
+	}
 }
 </script>
