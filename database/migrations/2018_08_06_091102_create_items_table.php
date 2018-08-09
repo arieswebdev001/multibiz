@@ -15,6 +15,16 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('item_sku');
+            $table->string('item_name');
+            $table->string('unit');
+            $table->text('description')->nullable();
+            $table->string('manufacturer')->nullable();
+            $table->integer('supplier_id');
+            $table->integer('item_group_id');
+            $table->integer('is_package');
+            $table->text('item_data')->nullable();
+            $table->integer('is_active');
             $table->timestamps();
         });
     }
