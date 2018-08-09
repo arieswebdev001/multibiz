@@ -1,265 +1,56 @@
 <template>
-    <aside id="left-sidebar-nav">
-          <ul id="slide-out" class="side-nav fixed leftside-navigation">
-            <li class="user-details cyan darken-2">
-              <div class="row">
-                <div class="col col s4 m4 l4">
-                  <img src="images/users/no photo.jpg" alt="" class="circle responsive-img valign profile-image cyan">
-                </div>
-                <div class="col col s8 m8 l8">
-                  <ul id="profile-dropdown-nav" class="dropdown-content">
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">face</i> Profile</a>
-                    </li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">settings</i> Settings</a>
-                    </li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">live_help</i> Help</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">lock_outline</i> Lock</a>
-                    </li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">keyboard_tab</i> Logout</a>
-                    </li>
-                  </ul>
-                  <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                  <p class="user-roal">Administrator</p>
-                </div>
-              </div>
-            </li>
-            <li class="no-padding">
-              <ul class="collapsible" data-collapsible="accordion">
-                <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">dashboard</i>
-                    <span class="nav-text">Dashboard</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="index.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>eCommerce</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="dashboard-analytics.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Analytics</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+    <div class="page-sidebar-wrapper">
+        <!-- BEGIN SIDEBAR -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <div class="page-sidebar navbar-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+            <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+            <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+            <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+            <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                <li class="nav-item start" :class="{ open : page === 'Dashboard' }">
+                    <a href="/#/dashboard" class="nav-link">
+                        <i class="icon-home"></i>
+                        <span class="title">Dashboard</span>
+                        <span class="selected" v-if="page === 'Dashboard'"></span>
+                    </a>
                 </li>
-                <li class="bold active">
-                  <a href="app-email.html" class="waves-effect waves-cyan">
-                    <i class="material-icons">mail_outline</i>
-                    <span class="nav-text">Mailbox</span>
-                  </a>
+                <li class="nav-item" :class="{ open : page === 'Items' }">
+                    <a href="/#/items" class="nav-link">
+                        <i class="icon-star"></i>
+                        <span class="title">Items</span>
+                        <span class="selected" v-if="page === 'Items'"></span>
+                    </a>
                 </li>
-                <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">pages</i>
-                    <span class="nav-text">Pages</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="page-contact.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Contact Page</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="page-todo.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>ToDos</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="page-blog-1.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Blog Type 1</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="page-blog-2.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Blog Type 2</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="page-404.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>404</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="page-500.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>500</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="page-blank.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Blank</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <li class="nav-item" :class="{ open : page === 'Warehouses' }">
+                    <a href="/#/warehouses" class="nav-link">
+                        <i class="fa fa-building"></i>
+                        <span class="title">Warehouses</span>
+                        <span class="selected" v-if="page === 'Warehouses'"></span>
+                    </a>
                 </li>
-                <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">add_shopping_cart</i>
-                    <span class="nav-text">eCommers</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="eCommerce-products-page.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Products Page</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="eCommerce-pricing.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Pricing Table</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="eCommerce-invoice.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Invoice</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <li class="nav-item" :class="{ open : page === 'Dealers' }">
+                    <a href="/#/dealers" class="nav-link">
+                        <i class="fa fa-users"></i>
+                        <span class="title">Dealers</span>
+                        <span class="selected" v-if="page === 'Dealers'"></span>
+                    </a>
                 </li>
-                <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">perm_media</i>
-                    <span class="nav-text">Medias</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="media-gallary-page.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Gallery Page</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="media-hover-effects.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Image Hover Effects</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <li class="nav-item">
+                    <a @click="logout" class="nav-link">
+                        <i class="icon-power"></i>
+                        <span class="title">Logout</span>
+                    </a>
                 </li>
-                <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">account_circle</i>
-                    <span class="nav-text">User</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="user-profile-page.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>User Profile</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="user-login.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Login</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="user-register.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Register</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="user-forgot-password.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Forgot Password</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="user-lock-screen.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Lock Screen</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">pie_chart_outlined</i>
-                    <span class="nav-text">Charts</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="charts-chartjs.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Chart JS</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-chartist.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Chartist</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-morris.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Morris Charts</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-xcharts.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>xCharts</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-flotcharts.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Flot Charts</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-sparklines.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Sparkline Charts</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only">
-            <i class="material-icons">menu</i>
-          </a>
-        </aside>
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+    </div>
 </template>
 <script>
 export default {

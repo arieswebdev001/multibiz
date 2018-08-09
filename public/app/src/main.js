@@ -9,8 +9,6 @@ import VueAxios from 'vue-axios'
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
-
- 
 Vue.use(VueAxios, axios)
 Vue.mixin(mixins);
 new Vue({

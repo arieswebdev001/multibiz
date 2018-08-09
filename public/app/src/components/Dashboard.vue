@@ -107,22 +107,34 @@
                 </div>
             </div>
         </div>
-        <data-table :rows="names" :columns="columns" :exportable="false"></data-table>
+        <data-table
+                :columns="clientTable.columns"
+                :rows="[]"
+                :paginate="true"
+                :onClick="clientTable.rowClicked"
+                styleClass="table table-bordered table-hover table-striped"
+        />
+
     </div>
 </template>
-
 <script>
-import DataTable from 'vue-materialize-datatable';
+
+import DataTable from './table/DataTable.vue';
 export default {
   name: 'Dashboard',
   components:{ DataTable },
   data () {
     return {
-        names:[{name:"Aries", address:"Singapore"}],
-        columns:[
-                    { label:"Name", field:"name" },
-                    { label: "Address", field: "address" }
-                ]
+        clientTable:{
+            columns: [
+                { label: 'BOSS ID', field: 'boss_id', filterable: true },
+                { label: 'Name', field: 'name', filterable: true },
+                { label: 'Address', field: 'user_address', filterable: true },
+                { label: 'Mobile', field: 'user_mobile', filterable: true },
+                { label: 'Email', field: 'email', filterable: true },
+                { label: 'Gender', field: 'gender_html', filterable: true, html:true },
+            ]
+        },
     }
   },
   mounted(){
